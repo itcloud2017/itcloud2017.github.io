@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>超级马里奥</title>
+    <link rel="stylesheet" href="../CSS/MrioStyle.css" type="text/css"/>
+    <script type="text/javascript" src="../js/mrioScript.js"></script>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+
+        }
+        img{
+            border: 0;
+        }
+        .gameWindow{
+            width: 800px;
+            height: 400px;
+            background-color: pink;
+            position: relative;
+        }
+
+        .controlWindow{
+            width: 800px;
+            background-color: #cccccc;
+        }
+    </style>
+</head>
+<body>
+<a id="tips">测试锚点</a>
+<script>
+    //创建一个马里奥类
+    function RoleMrio(){
+        this.x=0;
+        this.x=0;
+        //构造他的移动技能,上下左右移动分别对应0,1,2,3
+        this.move=function(opartor){
+            var mymrio=document.getElementById("mrioDiv");//获取马里奥图片元素
+            //上下移动像素
+            var Up_Down=mymrio.style.top;
+            Up_Down=parseInt(Up_Down.substr(0,Up_Down.length-2));
+            //左右移动像素
+            var Left_Right=mymrio.style.left;
+            Left_Right=parseInt(Left_Right.substr(0,Left_Right.length-2));
+            //DIV上边界和下边界
+            var LimTat=document.getElementById("gameWindow");
+            var LimHi=LimTat.style.height;
+            LimHi=parseInt(LimHi.substr(0,LimHi.length-2));
+            //DIV快左边界和右边界
+            var Limabc=document.getElementById("gameWindow");
+            var LimWd=Limabc.style.width;
+            LimWd=parseInt(LimWd.substr(0,LimWd.length-2));
+
+
+            //马里奥高
+            //mrio吃蘑菇
+            <!--获取马里奥的top和left位置-->
+            mymrio=document.getElementById("mrioDiv");
+            var mymriolf=mymrio.style.left;
+            var mymriort=mymrio.style.top;
+            //转换成数值
+            mymriolf=parseInt(mymriolf.substr(0,mymriolf.length-2));
+            mymriort=parseInt(mymriort.substr(0,mymriort.length-2));
+            <!--获取马里奥的width和height-->
+            var mymriowh=mymrio.style.width;
+            var mymrioht=mymrio.style.height;
+            //转换成数值
+            mymriowh=parseInt(mymriowh.substr(0,mymriowh.length-2));
+            mymrioht=parseInt(mymrioht.substr(0,mymrioht.length-2));
+
+
+            <!--获取蘑菇的top和left位置-->
+            var Mushroom=document.getElementById("MushroomId");
+            var Mushroomlf=Mushroom.style.left;
+            var Mushroomrt=Mushroom.style.top;
+            //转换成数值
+            Mushroomlf=parseInt(Mushroomlf.substr(0,Mushroomlf.length-2));
+            Mushroomrt=parseInt(Mushroomrt.substr(0,Mushroomrt.length-2));
+            //蘑菇和马里奥位置重叠
+            //键盘按下记录keyCode
+
+            switch(opartor){
+                case 0:
+                    mymrio.style.top=(Up_Down-10)+"px";
+                    break;
+                case 1:
+                    mymrio.style.top=(Up_Down+10)+"px";
+                    break;
+                case 2:
+                    mymrio.style.left=(Left_Right-10)+"px";
+                    break;
+                case 3:
+                    mymrio.style.left=(Left_Right+10)+"px";
+                    break;
+            }
+            if(Up_Down<0){
+                mymrio.style.top=0;
+                alert("碰到顶部了~");
+            }else if(Up_Down>(LimHi-83)){
+                mymrio.style.top=(LimHi-83)+"px";
+                alert("碰到底部啦");
+            }
+            if(Left_Right<0){
+                mymrio.style.left=0;
+                alert("碰到左边界了~");
+            }else if(Left_Right>(LimWd-50)){
+                mymrio.style.left=(LimWd-50)+"px";
+                alert("碰到右边界了");
+            }
+
+
+
+            if(mymriolf==Mushroomlf&&mymriort==Mushroomrt){
+                //蘑菇消失
+                //被蘑菇吃变小。。。。。下面代码有问题，变小了就算了。。
+                mymrio.style.width=mymrio.style.width+50+"px";
+                mymrio.style.height=mymrio.style.height+50+"px";
+            }
+
+
+        };
+    }
+
+    //对象实例化
+    var mrio1=new RoleMrio();
+    //全局函数
+    function mrioMove(opartor){
+        switch(opartor){
+            case 0:
+                mrio1.move(opartor);
+                break;
+            case 1:
+                mrio1.move(opartor);
+                break;
+            case 2:
+                mrio1.move(opartor);
+                break;
+            case 3:
+                mrio1.move(opartor);
+                break;
+        }
+    }
+</script>
+<div class="gameWindow" id="gameWindow" style="border: 1px solid #cccccc;height: 400px;width:800px">
+    <img id="mrioDiv" src="../images/mrio.jpg.gif" alt="马里奥图片" width="50px" height="83px" style="position: absolute;left: 0;top: 0;" />
+    <img id="MushroomId" src="../images/Life-Mushroom.png" alt="蘑菇屠夫" width="25px" style="position: relative;left: 700px;top: 300px"/>
+</div>
+<div class="controlWindow" style="border: 1px solid #000000;">
+    <table border="1px solid #000000" cellspacing="0" cellpadding="0" style="margin: 0 auto;" width="400px">
+        <tr align="center"><td colspan="3" style="font-size: 12px;font-style: italic">控制方向</td></tr>
+        <tr align="center"><td>**</td><td><input type="button" value="☝" onclick="mrioMove(0)"></td><td>**</td></tr>
+        <tr align="center"><td><input type="button" value="☜" onclick="mrioMove(2)"></td><td>**</td><td><input type="button" value="☞" onclick="mrioMove(3)"></td></tr>
+        <tr align="center"><td>**</td><td><input type="button" value="☟" onclick="mrioMove(1)"></td><td>**</td></tr>
+    </table>
+</div>
+<audio controls="controls" autoplay="autoplay">
+    <!--<source src="../Video/supperMrio.ogg" type="audio/ogg">-->
+    <source src="../Video/supperMrio.mp3" type="audio/mp3">
+</audio>
+</body>
+</html>
