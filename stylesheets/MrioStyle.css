@@ -1,0 +1,19 @@
+body{
+    margin: 0;
+    padding: 0;
+
+}
+img{
+    border: 0;
+}
+.gameWindow{
+    width: 800px;
+    height: 400px;
+    background-color: pink;
+    position: relative;
+}
+
+.controlWindow{
+    width: 800px;
+    background-color: #cccccc;
+}

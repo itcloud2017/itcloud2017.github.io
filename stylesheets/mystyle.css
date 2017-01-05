@@ -1,0 +1,50 @@
+#bg
+{
+    background-image: url("../images/ppd.jpg");
+    width: 730px;
+    height: 454px;
+    margin: auto;
+    z-index: -1;
+}
+#left
+{
+    background-image: url("../images/轮播图/left.gif");
+    width: 28px;
+    height: 62px;
+    position: relative;
+    top: 190px;
+    float: left;
+    display: none;
+    z-index: 1;
+}
+#right
+{
+    background-image: url("../images/轮播图/right.gif");
+    width: 28px;
+    height: 62px;
+    position: relative;
+    top: 190px;
+    float: right;
+    display: none;
+}
+#list
+{
+    position: relative;
+    top: 400px;
+    left: 300px;
+}
+#list li
+{
+    font-size: small;
+    color: #ffffff;
+    padding: 2px;
+    margin-left: 4px;
+    background-color: #666666;
+    list-style-type: none;
+    float: left;
+    border-radius: 50%;
+}
+#list li:hover
+{
+    background-color: #b61d1d;
+}

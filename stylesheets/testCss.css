@@ -1,0 +1,34 @@
+/*第一条规则*/
+#div1{
+    width:500px;
+    height:400px;
+    background-color: #ff0000;
+}
+/*第二条规则*/
+#div1{
+    opacity: 0.5;
+    display: none;
+}
+#tank1{
+    width:32px;
+    height:32px;
+    background: url("../images/tankAll.gif") scroll 0 0;
+}
+#tank2{
+     height:32px;
+     width:32px;
+     background: url("../images/tankAll.gif") scroll -256px 0;
+     position: absolute;
+     left: 50%;
+     top: 100%;
+ }
+#tank3{
+    width:32px;
+    height:32px;
+    background: url("../images/tankAll.gif") scroll ;
+}
+#tank4{
+    width:32px;
+    height:32px;
+    background: url("../images/tankAll.gif") scroll;
+}
